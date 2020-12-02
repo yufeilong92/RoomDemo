@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-          viewModelFactory = Injection.provideViewModelFactory(this)
+        viewModelFactory = Injection.provideViewModelFactory(this)
         btn_add.setOnClickListener {
             upDataName()
         }
@@ -31,12 +31,12 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         disposable.add(
-                viewModel.userName()
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe({
-                            tv_content.text = it
-                        }, {})
+            viewModel.userName()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    tv_content.text = it
+                }, {})
         )
 
     }
@@ -49,14 +49,14 @@ class MainActivity : AppCompatActivity() {
     private fun upDataName() {
         val com = et_content.text.toString()
         disposable.add(
-                viewModel.updateUserName(com)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe({
+            viewModel.updateUserName(com)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
 
-                        }, {
+                }, {
 
-                        })
+                })
 
         )
 
