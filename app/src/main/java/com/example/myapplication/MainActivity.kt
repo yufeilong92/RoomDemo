@@ -22,6 +22,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+          viewModelFactory = Injection.provideViewModelFactory(this)
+        btn_add.setOnClickListener {
+            upDataName()
+        }
     }
 
     override fun onStart() {
